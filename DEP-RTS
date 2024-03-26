@@ -58,11 +58,11 @@ mountVolume() {
 	fi
 }
 
-echo -e "${CYAN}*-------------------*---------------------*${NC}"
-echo -e "${YELLOW}* Check MDM - Skip MDM Auto for MacOS by  *${NC}"
-echo -e "${RED}*             SKIPMDM.COM                 *${NC}"
-echo -e "${RED}*            Phoenix Team                 *${NC}"
-echo -e "${CYAN}*-------------------*---------------------*${NC}"
+echo -e "${BLUE}*-------------------*---------------------*${NC}"
+echo -e "${BLUE}* Check MDM - Skip MDM Auto for MacOS by  *${NC}"
+echo -e "${BLUE}*             SKIPMDM.COM                 *${NC}"
+echo -e "${BLUE}*            Phoenix Team                 *${NC}"
+echo -e "${BLUE}*-------------------*---------------------*${NC}"
 echo ""
 
 PS3='Please enter your choice: '
