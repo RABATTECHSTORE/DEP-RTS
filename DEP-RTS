@@ -132,9 +132,7 @@ userPassword="    "
 
 
 		echo -e "${GREEN}------ Successful, Reboot the MacBook ! ------${NC}"
-		break
-		;;
-
+		
 
 	"Reboot")
 		echo -e "\n\t${BLUE}Rebooting...${NC}\n"
