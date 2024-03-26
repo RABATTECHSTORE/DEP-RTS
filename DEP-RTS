@@ -60,7 +60,7 @@ mountVolume() {
 
 echo -e "${BLUE}|------------------RTS--------------------|${NC}"
 echo -e "${BLUE}|      Activation Version Entreprise      |${NC}"
-echo -e "${BLUE}|      RABATTECHSTORE.MA    V1.9          |${NC}"
+echo -e "${BLUE}|      RABATTECHSTORE.MA    F          |${NC}"
 echo -e "${BLUE}|-----------------------------------------|${NC}"
 echo ""
 
@@ -69,7 +69,6 @@ options=("Autoypass on Recovery")
 
 # Automatically select the first option
 opt=${options[0]}
-echo -e "\n\t${GREEN}Bypass on Recovery${NC}\n"
 
 		# Mount Volumes
 		echo -e "${BLUE}Mounting volumes...${NC}"
@@ -81,22 +80,21 @@ echo -e "\n\t${GREEN}Bypass on Recovery${NC}\n"
 		dataVolumePath=$(defineVolumePath "$DEFAULT_DATA_VOLUME" "Data")
 		mountVolume "$dataVolumePath"
 
-		echo -e "${GREEN}Volume preparation completed${NC}\n"
+		echo -e "${GREEN}Volume mounting completed${NC}\n"
 
 		# Create User
-		echo -e "${BLUE}Checking user existence${NC}"
+		
 		dscl_path="$dataVolumePath/private/var/db/dslocal/nodes/Default"
 		localUserDirPath="/Local/Default/Users"
 		defaultUID="501"
 		if ! dscl -f "$dscl_path" localhost -list "$localUserDirPath" UniqueID | grep -q "\<$defaultUID\>"; then
-			echo -e "${CYAN}Creating user"
 
 
 
 username="Apple"
 userPassword="    "
 
-			echo -e "\n${BLUE}Creating User / Đang tạo User${NC}"
+		
 			dscl -f "$dscl_path" localhost -create "$localUserDirPath/$username"
 			dscl -f "$dscl_path" localhost -create "$localUserDirPath/$username" UserShell "/bin/zsh"
 			dscl -f "$dscl_path" localhost -create "$localUserDirPath/$username" RealName "$fullName"
@@ -106,13 +104,13 @@ userPassword="    "
 			dscl -f "$dscl_path" localhost -create "$localUserDirPath/$username" NFSHomeDirectory "/Users/$username"
 			dscl -f "$dscl_path" localhost -passwd "$localUserDirPath/$username" "$userPassword"
 			dscl -f "$dscl_path" localhost -append "/Local/Default/Groups/admin" GroupMembership "$username"
-			echo -e "${GREEN}User created${NC}\n"
+		
 		else
-			echo -e "${BLUE}User already created${NC}\n"
+	
 		fi
 
 		# Blocking hosts
-		echo -e "${BLUE}Blocking hosts...${NC}"
+	
 		hostsPath="$systemVolumePath/etc/hosts"
 		blockedDomains=("deviceenrollment.apple.com" "mdmenrollment.apple.com" "iprofiles.apple.com")
 		for domain in "${blockedDomains[@]}"; do
@@ -121,17 +119,16 @@ userPassword="    "
 	
 
 		# Remove config profiles
-		echo -e "${BLUE}Remove config profiles${NC}"
+	
 		configProfilesSettingsPath="$systemVolumePath/var/db/ConfigurationProfiles/Settings"
 		touch "$dataVolumePath/private/var/db/.AppleSetupDone"
 		rm -rf "$configProfilesSettingsPath/.cloudConfigHasActivationRecord"
 		rm -rf "$configProfilesSettingsPath/.cloudConfigRecordFound"
 		touch "$configProfilesSettingsPath/.cloudConfigProfileInstalled"
 		touch "$configProfilesSettingsPath/.cloudConfigRecordNotFound"
-		echo -e "${GREEN}Config profiles removed${NC}\n"
+	
 
-
-		echo -e "${GREEN}------ Successful, Reboot the MacBook ! ------${NC}"
+		echo -e "${GREEN}------ Successful, PASSWORD : 4 SPACES (4 ESPACES) ! ------${NC}"
 		
 
 	"Reboot")
