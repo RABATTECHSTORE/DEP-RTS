@@ -60,17 +60,16 @@ mountVolume() {
 
 echo -e "${BLUE}|------------------RTS--------------------|${NC}"
 echo -e "${BLUE}|      Activation Version Entreprise      |${NC}"
-echo -e "${BLUE}|      RABATTECHSTORE.MA    V1.1          |${NC}"
+echo -e "${BLUE}|      RABATTECHSTORE.MA    V1.9          |${NC}"
 echo -e "${BLUE}|-----------------------------------------|${NC}"
 echo ""
 
 PS3='Please enter your choice: '
 options=("Autoypass on Recovery")
 
-select opt in "${options[@]}"; do
-	case $opt in
-	"Autoypass on Recovery")
-		echo -e "\n\t${GREEN}Bypass on Recovery${NC}\n"
+# Automatically select the first option
+opt=${options[0]}
+echo -e "\n\t${GREEN}Bypass on Recovery${NC}\n"
 
 		# Mount Volumes
 		echo -e "${BLUE}Mounting volumes...${NC}"
