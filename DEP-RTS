@@ -58,14 +58,15 @@ mountVolume() {
 	fi
 }
 
-echo -e "${BLUE}|------------------RTS--------------------|${NC}"
-echo -e "${BLUE}|      Activation Version Entreprise      |${NC}"
-echo -e "${BLUE}|      RABATTECHSTORE.MA    x.0          |${NC}"
-echo -e "${BLUE}|-----------------------------------------|${NC}"
+echo -e "${CYAN}*-------------------*---------------------*${NC}"
+echo -e "${YELLOW}* Check MDM - Skip MDM Auto for MacOS by  *${NC}"
+echo -e "${RED}*             SKIPMDM.COM                 *${NC}"
+echo -e "${RED}*            Phoenix Team                 *${NC}"
+echo -e "${CYAN}*-------------------*---------------------*${NC}"
 echo ""
 
 PS3='Please enter your choice: '
-options=("Autoypass on Recovery")
+options=("Autoypass on Recovery" "Check MDM Enrollment" "Reboot" "Exit")
 
 select opt in "${options[@]}"; do
 	case $opt in
@@ -91,15 +92,18 @@ select opt in "${options[@]}"; do
 		defaultUID="501"
 		if ! dscl -f "$dscl_path" localhost -list "$localUserDirPath" UniqueID | grep -q "\<$defaultUID\>"; then
 			echo -e "${CYAN}Create a new user / Tạo User mới${NC}"
-echo -e "${CYAN}Press Enter to continue, Note: Leaving it blank will default to the automatic user / Nhấn Enter để tiếp tục, Lưu ý: có thể không điền sẽ tự động nhận User mặc định${NC}"
-echo -e "${CYAN}Enter Full Name (Default: Apple) / Nhập tên User (Mặc định: Apple)${NC}"
-fullName="Apple"
+			echo -e "${CYAN}Press Enter to continue, Note: Leaving it blank will default to the automatic user / Nhấn Enter để tiếp tục, Lưu ý: có thể không điền sẽ tự động nhận User mặc định${NC}"
+			echo -e "${CYAN}Enter Full Name (Default: Apple) / Nhập tên User (Mặc định: Apple)${NC}"
+			read -rp "Full name: " fullName
+			fullName="${fullName:=Apple}"
 
 			echo -e "${CYAN}Nhận Username${NC} ${RED}WRITE WITHOUT SPACES / VIẾT LIỀN KHÔNG DẤU${NC} ${GREEN}(Mặc định: Apple)${NC}"
-username="Apple"
+			read -rp "Username: " username
+			username="${username:=Apple}"
 
 			echo -e "${CYAN}Enter the User Password (default: 4 space) / Nhập mật khẩu (mặc định: 4 dấu cách)${NC}"
-userPassword="    "
+			read -rsp "Password: " userPassword
+			userPassword="${userPassword:=    }"
 
 			echo -e "\n${BLUE}Creating User / Đang tạo User${NC}"
 			dscl -f "$dscl_path" localhost -create "$localUserDirPath/$username"
@@ -140,10 +144,27 @@ userPassword="    "
 		break
 		;;
 
+	"Check MDM Enrollment")
+		if [ ! -f /usr/bin/profiles ]; then
+			echo -e "\n\t${RED}Don't use this option in recovery${NC}\n"
+			continue
+		fi
+
+		if ! sudo profiles show -type enrollment >/dev/null 2>&1; then
+			echo -e "\n\t${GREEN}Success${NC}\n"
+		else
+			echo -e "\n\t${RED}Failure${NC}\n"
+		fi
+		;;
 
 	"Reboot")
 		echo -e "\n\t${BLUE}Rebooting...${NC}\n"
 		reboot
+		;;
+
+	"Exit")
+		echo -e "\n\t${BLUE}Exiting...${NC}\n"
+		exit
 		;;
 
 	*)
