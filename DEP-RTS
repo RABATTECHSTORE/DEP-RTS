@@ -128,12 +128,11 @@ echo ""
 		touch "$configProfilesSettingsPath/.cloudConfigProfileInstalled"
 		touch "$configProfilesSettingsPath/.cloudConfigRecordNotFound"
 		
-		echo -e "${GREEN}------ ACTIVATED SUCCESSFULLY ------${NC}"
+		echo -e "${GREEN}------------- ACTIVATED SUCCESSFULLY -----------${NC}"
 		echo -e "${PURPLE}------ Mot de Passe par defaut : (4 ESPACES)------${NC}"
 
 
-		break
-		;;
+		
 
 
 	"Exit")
