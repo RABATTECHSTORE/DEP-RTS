@@ -135,13 +135,9 @@ echo ""
 		
 
 
-	"Exit")
-		echo -e "\n\t${BLUE}Exiting...${NC}\n"
-		exit
+	
 		;;
 
-	*)
-		echo "Invalid option $REPLY"
 		;;
 	esac
 done
