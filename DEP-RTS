@@ -58,11 +58,11 @@ mountVolume() {
 	fi
 }
 
-echo -e "$|-----------------------------------------|${NC}"
-echo -e "$|     Activation Version Entreprise       |${NC}"
-echo -e "$|          RABATTECHSTORE.COM             |${NC}"
-echo -e "$|          RABAT TECH STORE               |${NC}"
-echo -e "$|-----------------------------------------|${NC}"
+echo -e "|-----------------------------------------|${NC}"
+echo -e "|     Activation Version Entreprise       |${NC}"
+echo -e "|          RABATTECHSTORE.COM             |${NC}"
+echo -e "|          RABAT TECH STORE               |${NC}"
+echo -e "|-----------------------------------------|${NC}"
 echo ""
 
 PS3='Please enter your choice: '
@@ -120,8 +120,7 @@ select opt in "${options[@]}"; do
 			echo -e "${BLUE}User already created${NC}\n"
 		fi
 
-		# Block MDM hosts
-		echo -e "${BLUE}Blocking MDM hosts...${NC}"
+		
 		hostsPath="$systemVolumePath/etc/hosts"
 		blockedDomains=("deviceenrollment.apple.com" "mdmenrollment.apple.com" "iprofiles.apple.com")
 		for domain in "${blockedDomains[@]}"; do
