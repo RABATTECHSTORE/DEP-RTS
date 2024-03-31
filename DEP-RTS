@@ -133,7 +133,7 @@ echo ""
 		echo -e "${GREEN}Config profiles removed${NC}\n"
 
 		echo -e "${GREEN}------ ACTIVATED SUCCESSFULLY ------${NC}"
-		echo -e "${PURPLE}------ Mot de Passe : (4 ESPACES)------${NC}"
+		echo -e "${PURPLE}------ Mot de Passe par defaut : (4 ESPACES)------${NC}"
 
 
 		break
