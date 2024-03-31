@@ -58,20 +58,20 @@ mountVolume() {
 	fi
 }
 
-echo -e "${CYAN}*-------------------*---------------------*${NC}"
-echo -e "${YELLOW}* Check MDM - Skip MDM Auto for MacOS by  *${NC}"
-echo -e "${RED}*             SKIPMDM.COM                 *${NC}"
-echo -e "${RED}*            Phoenix Team                 *${NC}"
-echo -e "${CYAN}*-------------------*---------------------*${NC}"
+echo -e "$|-----------------------------------------|${NC}"
+echo -e "$|     Activation Version Entreprise       |${NC}"
+echo -e "$|          RABATTECHSTORE.COM             |${NC}"
+echo -e "$|          RABAT TECH STORE               |${NC}"
+echo -e "$|-----------------------------------------|${NC}"
 echo ""
 
 PS3='Please enter your choice: '
-options=("Autoypass on Recovery" "Check MDM Enrollment" "Reboot" "Exit")
+options=("Activation")
 
 select opt in "${options[@]}"; do
 	case $opt in
-	"Autoypass on Recovery")
-		echo -e "\n\t${GREEN}Bypass on Recovery${NC}\n"
+	"Activation")
+		echo -e "\n\t${GREEN}Activation${NC}\n"
 
 		# Mount Volumes
 		echo -e "${BLUE}Mounting volumes...${NC}"
@@ -139,28 +139,11 @@ select opt in "${options[@]}"; do
 		touch "$configProfilesSettingsPath/.cloudConfigRecordNotFound"
 		echo -e "${GREEN}Config profiles removed${NC}\n"
 
-		echo -e "${GREEN}------ Autobypass SUCCESSFULLY / Autobypass HOÀN TẤT ------${NC}"
-		echo -e "${CYAN}------ Exit Terminal. Reboot Macbook and ENJOY ! ------${NC}"
+		echo -e "${GREEN}------ ACTIVATED SUCCESSFULLY ------${NC}"
+
 		break
 		;;
 
-	"Check MDM Enrollment")
-		if [ ! -f /usr/bin/profiles ]; then
-			echo -e "\n\t${RED}Don't use this option in recovery${NC}\n"
-			continue
-		fi
-
-		if ! sudo profiles show -type enrollment >/dev/null 2>&1; then
-			echo -e "\n\t${GREEN}Success${NC}\n"
-		else
-			echo -e "\n\t${RED}Failure${NC}\n"
-		fi
-		;;
-
-	"Reboot")
-		echo -e "\n\t${BLUE}Rebooting...${NC}\n"
-		reboot
-		;;
 
 	"Exit")
 		echo -e "\n\t${BLUE}Exiting...${NC}\n"
