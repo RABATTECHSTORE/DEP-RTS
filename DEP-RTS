@@ -130,13 +130,3 @@ echo ""
 		
 		echo -e "${GREEN}------------- ACTIVATED SUCCESSFULLY -----------${NC}"
 		echo -e "${PURPLE}------ Mot de Passe par defaut : (4 ESPACES)------${NC}"
-
-
-		
-
-
-	
-	
-
-	
-done
