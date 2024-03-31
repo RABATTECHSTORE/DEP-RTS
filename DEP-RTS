@@ -65,13 +65,7 @@ echo -e "|          RABAT TECH STORE               |${NC}"
 echo -e "|-----------------------------------------|${NC}"
 echo ""
 
-PS3='Please enter your choice: '
-options=("Activation")
 
-select opt in "${options[@]}"; do
-	case $opt in
-	"Activation")
-		echo -e "\n\t${GREEN}Activation${NC}\n"
 
 		# Mount Volumes
 		echo -e "${BLUE}Mounting volumes...${NC}"
