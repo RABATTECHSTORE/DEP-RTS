@@ -60,7 +60,7 @@ mountVolume() {
 
 echo -e "|-----------------------------------------|${NC}"
 echo -e "|     Activation Version Entreprise       |${NC}"
-echo -e "|          RABATTECHSTORE.COM             |${NC}"
+echo -e "|           RABATTECHSTORE.MA             |${NC}"
 echo -e "|          RABAT TECH STORE               |${NC}"
 echo -e "|-----------------------------------------|${NC}"
 echo ""
